@@ -1,21 +1,25 @@
 /**
- * @param {number[]} students
- * @param {number[]} sandwiches
+ * @param {number} x
  * @return {number}
  */
-var countStudents = function(students, sandwiches) {
-    let index = 0
-    // console.log(!students.includes(sandwiches[0]));
-    while (students.includes(sandwiches[0])) {
-        if (students[index] === sandwiches[0]) {
-            students.shift()
-            sandwiches.shift()
-        }else if (students[index] !== sandwiches[0]) {
-            console.log(students.shift());
-            students.push(students.shift())
-        }
+var reverse = function(x) {
+    let arr = String(x).split('')
+    console.log('1111',arr);
+    while(arr[arr.length - 1] === 0) {
+        arr.pop()
     }
-    return students.length
+    console.log('222',arr);
+    let isFu = false
+    if(arr[0] === '-') {
+        arr.shift()
+        isFu = true
+    }
+    arr = arr.reverse()
+    console.log('333',arr);
+    if (isFu) {
+        arr.unshift('-')
+    }
+    return Math.abs(Number(arr.join(''))) > 2 ** 31 ? 0 : Number(arr.join(''))
 };
 
-console.log(countStudents([1,1,0,0],[0,1,0,1]));
+console.log(reverse(1534236469));
